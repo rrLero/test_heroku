@@ -45,5 +45,12 @@ def list_player():
         y.append([x.player_name, x.player_surname, x.photo_path])
     return jsonify(y)
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.debug = True
+  port = int(os.environ.get("PORT", 5000))
+  app.run(host='0.0.0.0', port=port)
+
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)
