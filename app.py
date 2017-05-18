@@ -26,6 +26,15 @@ DBSession = sessionmaker(bind=engine)
 session_git = DBSession()
 
 
+@app.route('/')
+def index():
+    return '''
+        <div align = "center">
+            <p><Test app Postgresql on Heroku>
+        </div>
+    '''
+
+
 # Добавить запись в базу в таблицу Player
 @app.route('/add/<player_name>')
 def add_player(player_name):
