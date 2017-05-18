@@ -12,11 +12,12 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 if os.environ.get('DATABASE_URL') is None:
-    SQLALCHEMY_DATABASE_URI = 'posgresql:///my_terst_base'
+    url = "postgresql:///my_terst_base"
 else:
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    url = os.environ['DATABASE_URL']
 
-engine = create_engine("postgresql:///my_terst_base")
+
+engine = create_engine(url)
 
 Base = declarative_base()
 Base.metadata.create_all(engine)
@@ -57,9 +58,9 @@ def list_player():
 
 
 if __name__ == '__main__':
-  app.debug = True
-  port = int(os.environ.get("PORT", 5000))
-  app.run(host='0.0.0.0', port=port)
+    app.debug = True
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 #
 # if __name__ == '__main__':
