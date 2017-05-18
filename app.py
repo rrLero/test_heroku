@@ -28,11 +28,7 @@ session_git = DBSession()
 
 @app.route('/')
 def index():
-    return '''
-        <div align = "center">
-            <p><Test app Postgresql on Heroku>
-        </div>
-    '''
+    return 'Test app Postgresql on Heroku'
 
 
 # Добавить запись в базу в таблицу Player
