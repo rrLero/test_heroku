@@ -4,8 +4,18 @@ from sqlalchemy.ext.declarative import declarative_base
 from my_models import Base, Player, Tournaments
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+import os
+
 
 app = Flask(__name__)
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+if os.environ.get('DATABASE_URL') is None:
+    SQLALCHEMY_DATABASE_URI = 'posgresql:///my_terst_base'
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
 engine = create_engine("postgresql:///my_terst_base")
 
 Base = declarative_base()
